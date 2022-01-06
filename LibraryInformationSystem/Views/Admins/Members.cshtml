@@ -1,0 +1,69 @@
+﻿@model IEnumerable<LibraryInformationSystem.Models.Admin>
+
+@{
+    ViewBag.Title = "Members";
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<h2>Members</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.AdminName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Create_Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Update_Time)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.AdminName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Create_Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Update_Time)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.AdminID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.AdminID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.AdminID })
+            </td>
+        </tr>
+    }
+
+</table>

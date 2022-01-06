@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - Admin App</title>
+    @Styles.Render("~/Content/Site.css")
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/jquery-ui.css")
+    @Styles.Render("~/Content/jquery-ui.structure.css")
+    @Styles.Render("~/Content/jquery-ui.theme.css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("管理員列表", "Members", "Admins")</li>
+                    <li>@Html.ActionLink("新增圖書", "AddBooks", "Admins")</li>
+                    <li>@Html.ActionLink("圖書集", "Books", "Admins")</li>
+                    <li>@Html.ActionLink("用戶平台", "Index", "Admins")</li>
+                    <li>@Html.ActionLink("管理者平台", "Index", "Admins")</li>
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Session["Admin"] != null)
+                    {
+                        <li style="color:aliceblue;">
+                            <a href="#">Welcome @Session["Admin"].ToString()</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/jquery-ui.js")
+    @Scripts.Render("~/Scripts/DatePickerReady.js")
+    @Scripts.Render("~/Scripts/jquery-3.3.1.js")
+    @RenderSection("scripts", required: false);
+</body>
+</html>

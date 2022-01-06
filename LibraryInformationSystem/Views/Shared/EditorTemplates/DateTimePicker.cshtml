@@ -1,0 +1,5 @@
+﻿@model DateTime?
+@{
+    var htmlAttributes = new { type = "date", @class = "form-control", placeholder = ViewData.ModelMetadata.Watermark };
+}
+@Html.TextBox("", Model?.ToString("yyyy-MM-dd"), htmlAttributes)

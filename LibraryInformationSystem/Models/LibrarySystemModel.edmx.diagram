@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2387b273a2e64573a3fbe6fc7f73691c" Name="Diagram1">
+        <EntityTypeShape EntityType="DemoModel.Admin" Width="1.5" PointX="1.125" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Book" Width="1.5" PointX="3.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Book_Image" Width="1.5" PointX="6" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Book_Recommendation" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Book_Reservation" Width="1.5" PointX="6" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Card" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Customer" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Customer_favorite" Width="1.5" PointX="6" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Message_Board" Width="1.5" PointX="3" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Publisher" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Recommendation_Status" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Record" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Rent_Item" Width="1.5" PointX="8" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Reply_Message_Board" Width="1.5" PointX="5.25" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="DemoModel.FK__Record__BookID__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="DemoModel.FK_Book_Image" ManuallyRouted="false" />
+        <AssociationConnector Association="DemoModel.FK_Book_Reservation" ManuallyRouted="false" />
+        <AssociationConnector Association="DemoModel.FK_Customer_favorite_BookID" ManuallyRouted="false" />
+        <AssociationConnector Association="DemoModel.FK_Rent_Item_BookID" ManuallyRouted="false" />
+        <AssociationConnector Association="DemoModel.FK_Book_Recommendation" ManuallyRouted="false" />
+        <AssociationConnector Association="DemoModel.FK_Book_Reservation_CustomerID" ManuallyRouted="false" />
+        <AssociationConnector Association="DemoModel.FK__Record__CardID__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="DemoModel.FK_Card" ManuallyRouted="false" />
+        <AssociationConnector Association="DemoModel.FK_Customer_favorite_CustomerID" ManuallyRouted="false" />
+        <AssociationConnector Association="DemoModel.FK_Message_Board" ManuallyRouted="false" />
+        <AssociationConnector Association="DemoModel.FK_Rent_Item_CustomerID" ManuallyRouted="false" />
+        <AssociationConnector Association="DemoModel.FK_Reply_Message_Board_CustomerID" ManuallyRouted="false" />
+        <AssociationConnector Association="DemoModel.FK_Reply_Message_Board_MessageID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

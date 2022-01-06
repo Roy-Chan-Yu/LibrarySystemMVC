@@ -1,0 +1,106 @@
+﻿@model IEnumerable<LibraryInformationSystem.Models.Book>
+
+@using PagedList
+@using PagedList.Mvc
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+<h2>簡易查詢</h2>
+
+<div class="container-fluid">
+    @using (Html.BeginForm("Search", "Books", FormMethod.Get))
+    {
+        <div class="form-group">
+            <label for="BookName">BookName</label>
+            @Html.TextBox("queryString")
+            <input type="submit" value="Search" />
+            @*<button type="submit" class="btn btn-primary">Submit</button>*@
+        </div>
+    }
+</div>
+
+@if (Model.Count() == 0)
+{
+    <tr>
+        <td colspan="3">No Results for @Request.QueryString["queryString"]</td>
+        <br />
+        <td colspan="3">Try checking your spelling or use more general terms</td>
+
+    </tr>
+}
+@if (Model.Count() >= 1)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ISBN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publisher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublicTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th></th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ISBN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Publisher)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PublicTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.BookID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.BookID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.BookID })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
+@Html.PagedListPager((IPagedList)Model, page=> Url.Action("Search",
+    new { page, queryString = ViewBag.queryString} ))
+<script>
+
+    Console.log(@Model);
+</script>

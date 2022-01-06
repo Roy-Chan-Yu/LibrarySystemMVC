@@ -1,0 +1,11 @@
+﻿@model DateTime?
+
+@if (Model == null)
+{
+
+}
+
+@if (Model != null)
+{
+    <span>@(((DateTime)Model).ToString("yyyy/MM/dd"))</span>
+}

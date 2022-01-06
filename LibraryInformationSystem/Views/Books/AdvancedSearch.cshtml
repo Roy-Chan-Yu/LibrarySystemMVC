@@ -1,0 +1,138 @@
+﻿@model IEnumerable<LibraryInformationSystem.Models.Book>
+@using PagedList
+@using PagedList.Mvc
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+<h2>進階查詢</h2>
+
+<div class="container-fluid">
+    @using (Html.BeginForm("AdvancedSearch", "Books", FormMethod.Get))
+    {
+        <div class="form-group">
+            <div class="col-12">
+                <label for="BookName">BookName: </label>
+                @Html.TextBox("BookName", "", new { htmlAttributes = new { @class = "form-control" } })
+                <label for="Category">Category: </label>
+                @Html.DropDownList("Category",new List<SelectListItem>
+                {
+                    new SelectListItem{ Text="ALL", Value=""},
+                    new SelectListItem{ Text="教育學", Value = "教育學" },
+                    new SelectListItem{ Text="電腦科學", Value = "電腦科學" },
+                    new SelectListItem{ Text="人類學", Value = "人類學" },
+                    new SelectListItem{ Text="文化學", Value = "文化學" },
+                    new SelectListItem{ Text="動物學", Value = "動物學" },
+                })
+
+                <label for="Author">Author: </label>
+                @Html.TextBox("Author")
+                <label for="ISBN">ISBN: </label>
+                @Html.TextBox("ISBN")
+                <br />
+                <label for="Publisher">Publisher: </label>
+                @Html.TextBox("Publisher")
+
+                <label for="Location">Location</label>
+                @Html.TextBox("Location")
+            </div>
+
+            <label for="PublicTime" style="float: left">
+                PublicTime:
+            </label>
+
+            @Html.Editor("PublicTime", "DateTimePicker", new { @style = "Float:left" })
+
+            <input type="submit" value="Search" />
+        </div>
+    }
+</div>
+
+@if (Model.Count() == 0)
+{
+    <tr>
+        <td colspan="3">Try checking your spelling or use more general terms</td>
+
+    </tr>
+}
+
+@if (Model.Count() >= 1)
+{
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ISBN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publisher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublicTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ISBN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Publisher)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PublicTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.BookID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.BookID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.BookID })
+                    </td>*@
+            </tr>
+        }
+
+    </table>
+}
+
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("AdvancedSearch",
+    new {
+        ISBN = ViewBag.ISBN,
+        category = ViewBag.Category,
+        BookName = ViewBag.BookName,
+        Publisher = ViewBag.Publisher,
+        Author = ViewBag.Author,
+        Location = ViewBag.Location,
+        PublicTime = ViewBag.PublicTime
+        ,page
+    }))
